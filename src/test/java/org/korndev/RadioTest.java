@@ -14,7 +14,7 @@ class RadioTest {
             "8,9",
             "9,0"
     })
-    void nextRadionstationTest(int newRadiostation, int expected) {
+    public void nextRadionstationTest(int newRadiostation, int expected) {
         Radio radio = new Radio();
 
         radio.nextRadiostation(newRadiostation);
@@ -31,7 +31,7 @@ class RadioTest {
             "1,0",
             "0,9"
     })
-    void prevRadionstationTest(int newRadiostation, int expected) {
+    public void prevRadionstationTest(int newRadiostation, int expected) {
         Radio radio = new Radio();
 
         radio.prevRadiostation(newRadiostation);
@@ -49,7 +49,7 @@ class RadioTest {
             "9,9",
             "10,0"
     })
-    void setCurrentRadiostation(int newRadiostation, int expected) {
+    public void setCurrentRadiostationTest(int newRadiostation, int expected) {
         Radio radio = new Radio();
 
         radio.setCurrentRadiostation(newRadiostation);
@@ -58,7 +58,6 @@ class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
     @ParameterizedTest
     @CsvSource({
             "0,1",
@@ -66,15 +65,15 @@ class RadioTest {
             "99,100",
             "100,100"
     })
-    void upVolume(int volume, int expected) {
+    public void upVolumeTest(int volume, int expected) {
         Radio radio = new Radio();
         radio.upVolume(volume);
 
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
-    }
 
+    }
     @ParameterizedTest
     @CsvSource({
             "100,99",
@@ -82,9 +81,26 @@ class RadioTest {
             "1,0",
             "0,0"
     })
-    void downVolume(int volume, int expected) {
+    public void downVolumeTest(int volume, int expected) {
         Radio radio = new Radio();
         radio.downVolume(volume);
+
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "-1,0",
+            "0,0",
+            "100,100",
+            "101,0"
+    })
+    public void setCurrentVolumeTest(int volume, int expected) {
+        Radio radio = new Radio();
+
+        radio.setCurrentVolume(volume);
 
         int actual = radio.getCurrentVolume();
 
