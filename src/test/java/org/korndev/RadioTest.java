@@ -67,7 +67,8 @@ class RadioTest {
     })
     public void upVolumeTest(int volume, int expected) {
         Radio radio = new Radio();
-        radio.upVolume(volume);
+        radio.setCurrentVolume(volume);
+        radio.upVolume();
 
         int actual = radio.getCurrentVolume();
 
@@ -83,7 +84,8 @@ class RadioTest {
     })
     public void downVolumeTest(int volume, int expected) {
         Radio radio = new Radio();
-        radio.downVolume(volume);
+        radio.setCurrentVolume(volume);
+        radio.downVolume();
 
         int actual = radio.getCurrentVolume();
 
