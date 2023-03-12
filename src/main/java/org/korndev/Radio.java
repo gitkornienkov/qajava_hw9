@@ -5,9 +5,6 @@ public class Radio {
     private int currentRadiostation;
     private int currentVolume;
 
-
-
-
     public int getCurrentRadiostation() {
         return currentRadiostation;
     }
@@ -22,24 +19,23 @@ public class Radio {
         this.currentRadiostation = currentRadiostation;
     }
 
-    public void nextRadiostation(int newCurrentRadiostation) {    //Следующая радиостанция
-        if (newCurrentRadiostation != 9) {
-            newCurrentRadiostation = newCurrentRadiostation + 1;
+    public void nextRadiostation() {    //Следующая радиостанция
+        if (currentRadiostation != 9) {
+            currentRadiostation = currentRadiostation + 1;
         } else {
-            newCurrentRadiostation = 0;
+            currentRadiostation = 0;
         }
 
-        currentRadiostation = newCurrentRadiostation;
+        this.currentRadiostation = currentRadiostation;
     }
 
-    public void prevRadiostation(int newCurrentRadiostation) {    //Предыдущая радиостанция
-        if (newCurrentRadiostation != 0) {
-            newCurrentRadiostation = newCurrentRadiostation - 1;
+    public void prevRadiostation() {    //Предыдущая радиостанция
+        if (currentRadiostation != 0) {
+            currentRadiostation = currentRadiostation - 1;
         } else {
-            newCurrentRadiostation = 9;
+            currentRadiostation = 9;
         }
-
-        currentRadiostation = newCurrentRadiostation;
+        this.currentRadiostation = currentRadiostation;
     }
 
     public int getCurrentVolume() {

@@ -14,14 +14,13 @@ class RadioTest {
             "8,9",
             "9,0"
     })
-    public void nextRadionstationTest(int newRadiostation, int expected) {
+    public void nextRadionstationTest(int radiostation, int expected) {
         Radio radio = new Radio();
 
-        radio.nextRadiostation(newRadiostation);
+        radio.setCurrentRadiostation(radiostation);
+        radio.nextRadiostation();
 
-        int actual = radio.getCurrentRadiostation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, radio.getCurrentRadiostation());
     }
 
     @ParameterizedTest
@@ -31,14 +30,13 @@ class RadioTest {
             "1,0",
             "0,9"
     })
-    public void prevRadionstationTest(int newRadiostation, int expected) {
+    public void prevRadionstationTest(int radiostation, int expected) {
         Radio radio = new Radio();
 
-        radio.prevRadiostation(newRadiostation);
+        radio.setCurrentRadiostation(radiostation);
+        radio.prevRadiostation();
 
-        int actual = radio.getCurrentRadiostation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, radio.getCurrentRadiostation());
     }
 
     @ParameterizedTest
@@ -49,14 +47,12 @@ class RadioTest {
             "9,9",
             "10,0"
     })
-    public void setCurrentRadiostationTest(int newRadiostation, int expected) {
+    public void setCurrentRadiostationTest(int radiostation, int expected) {
         Radio radio = new Radio();
 
-        radio.setCurrentRadiostation(newRadiostation);
+        radio.setCurrentRadiostation(radiostation);
 
-        int actual = radio.getCurrentRadiostation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, radio.getCurrentRadiostation());
     }
     @ParameterizedTest
     @CsvSource({
@@ -67,6 +63,7 @@ class RadioTest {
     })
     public void upVolumeTest(int volume, int expected) {
         Radio radio = new Radio();
+
         radio.setCurrentVolume(volume);
         radio.upVolume();
 
@@ -84,12 +81,11 @@ class RadioTest {
     })
     public void downVolumeTest(int volume, int expected) {
         Radio radio = new Radio();
+
         radio.setCurrentVolume(volume);
         radio.downVolume();
 
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, radio.getCurrentVolume());
 
     }
     @ParameterizedTest
@@ -104,8 +100,6 @@ class RadioTest {
 
         radio.setCurrentVolume(volume);
 
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, radio.getCurrentVolume());
     }
 }
