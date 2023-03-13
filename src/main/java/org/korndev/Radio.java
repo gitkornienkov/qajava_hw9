@@ -2,38 +2,51 @@ package org.korndev;
 
 public class Radio {
 
-    private int currentRadiostation;
+    private int maxNumberRadiostation = 9;
+    private int currentRadiostation = 0;
     private int currentVolume;
+
+    public Radio (int maxNumberRadiostation) {
+        this.maxNumberRadiostation = maxNumberRadiostation - 1;
+    }
+
+    public Radio (){
+        maxNumberRadiostation = 9;
+    }
+
+    public int getMaxNumberRadiostation() {
+        return maxNumberRadiostation;
+    }
 
     public int getCurrentRadiostation() {
         return currentRadiostation;
     }
 
+
     public void setCurrentRadiostation(int currentRadiostation) {
         if (currentRadiostation < 0) {
             return;
         }
-        if (currentRadiostation > 9) {
+        if (currentRadiostation > maxNumberRadiostation) {
             return;
         }
         this.currentRadiostation = currentRadiostation;
     }
 
-    public void nextRadiostation() {    //Следующая радиостанция
-        if (currentRadiostation != 9) {
+    public void nextRadiostation() {
+        if (currentRadiostation != maxNumberRadiostation) {
             currentRadiostation = currentRadiostation + 1;
         } else {
             currentRadiostation = 0;
         }
-
         this.currentRadiostation = currentRadiostation;
     }
 
-    public void prevRadiostation() {    //Предыдущая радиостанция
+    public void prevRadiostation() {
         if (currentRadiostation != 0) {
             currentRadiostation = currentRadiostation - 1;
         } else {
-            currentRadiostation = 9;
+            currentRadiostation = maxNumberRadiostation;
         }
         this.currentRadiostation = currentRadiostation;
     }
